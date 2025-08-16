@@ -1,0 +1,45 @@
+type User{
+uid: ID,
+username: String,
+uemailid: String,
+contact: String,
+orders: [Orders]
+}
+
+type Orders{
+oid: ID,
+orderaddress: String,
+orderpincode: Int,
+ordertype: String,
+ordersprice: Float,
+orderstatus: String
+}
+
+input UserInput{
+username: String,
+uemailid: String,
+contact: String,
+orders: [OrdersInput]
+}
+input OrdersInput{
+orderaddress: String,
+orderpincode: Int,
+ordertype: String,
+ordersprice: Float,
+orderstatus: String
+
+}
+type Query{
+getUserDetails:[User],
+getUserbyid(uid:ID!):User,
+getAllOrder:[Orders],
+getOrderById(oid:ID!):Orders
+
+}
+
+type Mutation{
+	createUser(username:String,uemailid:String,contact:String):User,
+	deleteUser(uid:ID!):String,
+		createOrders(orderaddress:String,orderpincode:Int,ordertype:String,ordersprice:Float,orderstatus:String):Orders
+	
+}
